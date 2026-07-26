@@ -146,13 +146,6 @@ npm test
 - `tests/unit/` — pure-function tests (query/pagination builder), no database needed.
 - `tests/integration/` — full HTTP tests (register/login, task CRUD, cross-user ownership isolation) against an in-memory MongoDB via `mongodb-memory-server`. The first run downloads a MongoDB binary, so it needs normal internet access.
 
-## Deployment Steps
-
-1. Provision a MongoDB instance (MongoDB Atlas free tier is simplest).
-2. Deploy `backend/` to a Node host (Render, Railway, Fly.io, etc.), setting the environment variables listed above.
-3. Deploy `frontend/` as a static site (Vercel, Netlify) with `VITE_API_URL` pointing at the deployed backend, or serve it via the provided Dockerfile/nginx.
-4. Update `CLIENT_URL` on the backend to match the deployed frontend origin (for CORS).
-
 ## Known Issues / Incomplete Items
 
 - No refresh-token rotation — a single JWT is valid for its full lifetime (`JWT_EXPIRES_IN`). Acceptable for the scope of this assessment; a production app would add refresh tokens.
