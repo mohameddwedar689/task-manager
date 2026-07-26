@@ -28,7 +28,7 @@ const app = express();
 app.use(helmet()); // sets safe HTTP headers (X-Content-Type-Options, etc.)
 app.use(
   cors({
-    origin: config.clientUrl,
+    origin: ["https://task-manager-beta-two-76.vercel.app/", "task-manager-jasaibuq4-mohamed-dwedar-s-projects.vercel.app"],
     credentials: true,
   })
 );
