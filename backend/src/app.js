@@ -24,11 +24,26 @@ const taskRoutes = require('./routes/task.routes');
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://task-manager-beta-two-76.vercel.app",
+  "https://task-manager-jasaibuq4-mohamed-dwedar-s-projects.vercel.app",
+];
+
 // --- Security middleware ---
 app.use(helmet()); // sets safe HTTP headers (X-Content-Type-Options, etc.)
 app.use(
   cors({
-    origin: ["https://task-manager-beta-two-76.vercel.app/", "task-manager-jasaibuq4-mohamed-dwedar-s-projects.vercel.app"],
+    origin(origin, callback) {
+      // Allow requests with no Origin (Postman, curl, etc.)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
