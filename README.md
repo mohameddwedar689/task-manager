@@ -63,7 +63,7 @@ task-manager/
 Prerequisites: Node.js 18+, npm, and either a local MongoDB instance or a MongoDB Atlas connection string (or Docker, see below).
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/mohameddwedar689/task-manager.git
 cd task-manager
 ```
 
